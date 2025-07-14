@@ -1,0 +1,32 @@
+class Solution(object):
+    def topKFrequent(self, nums, k):
+       resultSet={}
+       result=[]
+       revSet={}
+       for i in range(len(nums)):
+         if(nums[i] not in resultSet):
+            resultSet[nums[i]]=1
+         else:
+            resultSet[nums[i]]=resultSet[nums[i]]+1
+        #reverse the result set  
+       for key in resultSet:
+            freq=resultSet[key]
+            if(freq not in revSet):
+                revSet[freq]=[key]
+            else:
+                revSet[freq].append(key)
+       index=0
+       for i in range(len(nums),0,-1):#looping over frequencies
+            if(i in revSet):
+                    for j in revSet[i]:
+                        if(index<k):
+                            result.append(j)
+                            index+=1
+                        else:    
+                            return result      
+       return result                 
+
+
+   
+
+        
