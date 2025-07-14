@@ -1,0 +1,10 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        result={}
+        if len(nums)==0: return null
+        for i in range(len(nums)):
+            diff=target-nums[i]
+            if(diff in result):
+                return([i,result[diff]])
+            result[nums[i]]=i
+        return null 
