@@ -1,10 +1,27 @@
 class Solution(object):
     def twoSum(self, nums, target):
-        result={}
-        if len(nums)==0: return null
+        # 🔹 Step 1: Create an empty hash map (dictionary) to store numbers and their indices
+        # Key = number seen so far
+        # Value = index where that number appears
+        result = {}
+
+        # 🔸 Edge case: if the list is empty, return None (no solution possible)
+        if len(nums) == 0:
+            return None  # Use `None` in Python instead of `null`
+
+        # 🔹 Step 2: Traverse through the list
         for i in range(len(nums)):
-            diff=target-nums[i]
-            if(diff in result):
-                return([i,result[diff]])
-            result[nums[i]]=i
-        return null 
+            # Calculate the complement that we need to find in the map
+            diff = target - nums[i]
+
+            # 🔸 Step 3: Check if the complement is already in the map
+            # If it is, we found the pair that adds up to the target
+            if diff in result:
+                # Return indices: current index and index of the complement
+                return [i, result[diff]]
+
+            # 🔹 Step 4: If complement is not found, store the current number and its index
+            result[nums[i]] = i
+
+        # 🔸 Step 5: If no solution found (which shouldn't happen if problem guarantees a solution)
+        return None
