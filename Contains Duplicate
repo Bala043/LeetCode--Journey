@@ -1,0 +1,21 @@
+class Solution(object):
+    def containsDuplicate(self, nums):
+        # 🔹 Step 1: Initialize an empty dictionary to store the frequency of each number
+        numsdict = {}
+
+        # 🔹 Step 2: Traverse through the list of numbers
+        for num in nums:
+            # If the number is not in the dictionary, add it with count 1
+            if num not in numsdict:
+                numsdict[num] = 1
+            else:
+                # If it's already present, increment its count
+                numsdict[num] = numsdict[num] + 1
+
+        # 🔹 Step 3: Check if any number has a count greater than 1 (i.e., duplicate found)
+        for key in numsdict:
+            if numsdict[key] > 1:
+                return True  # Return True immediately if a duplicate is found
+
+        # 🔹 Step 4: If the loop completes and no duplicates are found, return False
+        return False
