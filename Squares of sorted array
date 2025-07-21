@@ -1,0 +1,31 @@
+class Solution(object):
+    def sortedSquares(self, nums):
+        # Initialize two pointers: left at start, right at end of the array
+        left = 0
+        right = len(nums) - 1
+        result = []  # This will hold squares in reverse order (largest to smallest)
+
+        # Traverse from both ends toward the center
+        while left <= right:
+            # Compare absolute values to decide which square is larger
+            if abs(nums[left]) > abs(nums[right]):
+                result.append(nums[left] ** 2)  # Square the left value
+                left += 1  # Move left pointer right
+            else:
+                result.append(nums[right] ** 2)  # Square the right value
+                right -= 1  # Move right pointer left
+
+        # At this point, result[] has squares in descending order
+        # So we need to reverse it manually using two pointers
+
+        i = 0
+        j = len(result) - 1
+
+        # Swap elements from both ends toward the center
+        while i <= j:
+            result[i], result[j] = result[j], result[i]
+            i += 1
+            j -= 1
+
+        # Now result[] is in non-decreasing (ascending) order
+        return result
