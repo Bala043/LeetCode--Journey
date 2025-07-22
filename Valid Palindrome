@@ -1,0 +1,27 @@
+class Solution(object):
+    def isPalindrome(self, s):
+        # Initialize two pointers: one at the start, one at the end
+        left = 0
+        right = len(s) - 1
+
+        # Loop until the two pointers cross each other
+        while left < right:
+
+            # 🔁 Skip non-alphanumeric characters from the left
+            while left < right and not s[left].isalnum():
+                left += 1
+
+            # 🔁 Skip non-alphanumeric characters from the right
+            while left < right and not s[right].isalnum():
+                right -= 1
+
+            # 🧪 Compare the characters in lowercase for case-insensitive comparison
+            if s[left].lower() != s[right].lower():
+                return False  # ❌ Not a palindrome
+
+            # ✅ Move both pointers inward
+            left += 1
+            right -= 1
+
+        # ✅ If all characters matched, it’s a valid palindrome
+        return True
