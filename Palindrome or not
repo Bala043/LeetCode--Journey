@@ -1,0 +1,20 @@
+class Solution(object):
+    def isPalindrome(self, x):
+        # Negative numbers can't be palindrome because of the '-' sign
+        if x < 0:
+            return False
+
+        # Make a copy of x to reverse it
+        dup = x
+        rev = 0  # To store reversed number
+
+        # Reverse the number
+        while dup > 0:
+            last = dup % 10            # Get last digit
+            rev = rev * 10 + last      # Append digit to reverse number
+            dup = dup // 10            # Remove last digit from dup
+
+        # Check if the original number is equal to its reverse
+        if rev == x:
+            return True
+        return False
